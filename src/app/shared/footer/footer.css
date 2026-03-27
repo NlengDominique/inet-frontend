@@ -1,0 +1,41 @@
+.footer {
+  background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+  color: white;
+  margin-top: auto;
+}
+
+.footer h5 {
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #e74c3c 0%, #f39c12 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+
+.social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  color: white;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+  background: linear-gradient(135deg, #e74c3c 0%, #f39c12 100%);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.border-top {
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}

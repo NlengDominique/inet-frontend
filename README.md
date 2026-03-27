@@ -1,59 +1,68 @@
-# InetFrontend
+# InetFrontend - Application de Gestion de Catalogue
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.4.
+Ce projet est une application frontend développée avec **Angular 21** permettant la gestion et la consultation d'un catalogue de livres. Elle inclut un système d'authentification et une interface utilisateur moderne basée sur Bootstrap.
 
-## Development server
+## 🚀 Fonctionnalités
 
-To start a local development server, run:
+- 🔐 **Authentification** : Système de connexion sécurisé avec redirection automatique.
+- 📚 **Catalogue de Livres** : Affichage d'une liste paginée de livres.
+- 🛡️ **Guards & Interceptors** : Protection des routes (`AuthGuard`) et gestion des tokens d'authentification.
+- 🎨 **Interface Moderne** : Utilisation de **Bootstrap 5** et **FontAwesome 7** pour une expérience utilisateur fluide.
+- ✅ **Tests unitaires** : Intégration de **Vitest** pour la robustesse du code.
 
+## 🛠️ Technologies Utilisées
+
+- **Framework** : Angular 21.2.4
+- **Langage** : TypeScript
+- **Style** : Bootstrap 5.3.8 & CSS
+- **Icônes** : FontAwesome 7.1.0
+- **Test Runner** : Vitest 4.0.8
+- **Gestionnaire de paquets** : npm
+
+## 🏁 Démarrage Rapide
+
+### Prérequis
+
+Assurez-vous d'avoir [Node.js](https://nodejs.org/) (version compatible avec npm 10.9.4) et [Angular CLI](https://angular.dev/tools/cli) installés.
+
+### Installation
+
+1. Clonez le projet.
+2. Installez les dépendances :
+   ```bash
+   npm install
+   ```
+
+### Lancement du serveur de développement
+
+Pour démarrer l'application localement :
 ```bash
-ng serve
+npm start
+```
+Une fois lancé, accédez à `http://localhost:4200/`. L'application se rechargera automatiquement à chaque modification.
+
+## 🏗️ Structure du Projet
+
+- `src/app/guards/` : Protection des accès (AuthGuard).
+- `src/app/interceptors/` : Interception des requêtes HTTP (Auth).
+- `src/app/models/` : Définitions des interfaces de données (Book, User, PaginatedResponse).
+- `src/app/services/` : Logique de communication avec l'API (AuthService, BookService).
+- `src/app/shared/` : Composants réutilisables (Navbar, Footer, Login).
+- `src/app/user/` : Fonctionnalités spécifiques aux utilisateurs (Catalogue/BookList).
+
+## 📜 Scripts Disponibles
+
+- `npm start` : Lance le serveur de développement.
+- `npm run build` : Compile le projet pour la production dans le dossier `dist/`.
+- `npm run test` : Exécute les tests unitaires avec Vitest.
+- `npm run watch` : Compile en mode développement avec observation des changements.
+
+## 🧪 Tests
+
+Pour exécuter les tests avec Vitest :
+```bash
+npm test
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+---
+Généré avec l'Angular CLI.

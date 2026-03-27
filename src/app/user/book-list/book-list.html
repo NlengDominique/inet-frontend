@@ -1,0 +1,91 @@
+<div class="livre-list fade-in">
+  <div class="page-header mb-5">
+    <h1 class="display-6 fw-bold text-primary">
+      <i class="fas fa-book-open me-3"></i>Catalogue des Livres
+    </h1>
+  </div>
+
+  <div class="row mb-4">
+    <div class="col-md-3 col-6">
+      <div class="stat-card-sm bg-light-blue">
+        <div class="stat-icon-sm bg-primary">
+          <i class="fas fa-book"></i>
+        </div>
+        <div class="stat-content">
+          <h4 class="mb-1 fw-bold">{{ books().length }}</h4>
+          <p class="mb-0 text-muted small">Livres totaux</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" >
+
+    @for (book of books(); track book.id) {
+      <div class="col-lg-4 col-md-6 mb-4" >
+        <div class="card livre-card h-100 border-0 shadow-sm">
+          <div class="card-body">
+            <div class="text-center mb-4">
+              <div class="livre-cover mx-auto">
+                @if (book.imageUrl) {
+                  <img [ngSrc]="book.imageUrl" width="110" height="110" alt="image">
+                }
+              </div>
+            </div>
+
+            <h5 class="livre-title mb-3 text-center">{{ book.title }}</h5>
+
+            <p class="livre-author text-center text-muted mb-3">
+              <i class="fas fa-user-edit me-1"></i>{{ book.author }}
+            </p>
+
+            <div class="livre-stats d-flex justify-content-center mb-3">
+              <div class="text-center">
+                <i class="fas fa-copy text-primary mb-1 d-block"></i>
+                <small class="text-muted">Exemplaires</small>
+                <p class="mb-0 fw-bold">{{ book.totalCopies }}</p>
+              </div>
+              @if (authService.isAdmin()){
+
+                <div class="text-center">
+                  <i class="fas fa-users text-info mb-1 d-block"></i>
+                  <small class="text-muted">Empruntés</small>
+                  <p class="mb-0 fw-bold">{{ book.totalCopies - book.availableCopies }}</p>
+                </div>
+              }
+
+            </div>
+
+
+
+          </div>
+
+          <div class="card-footer bg-transparent text-center">
+            <small class="text-muted">
+              <i class="fas fa-info-circle me-1"></i>
+               Publié le {{ book.publicationDate | date:'dd/MM/yyyy' }}
+            </small>
+          </div>
+
+        </div>
+      </div>
+    }
+
+
+  </div>
+
+  @if (books().length === 0 && !loading()){
+    <div class="text-center py-5">
+      <i class="fas fa-book fa-4x text-muted opacity-50 mb-4"></i>
+      <h4 class="mb-3">Aucun livre trouvé</h4>
+    </div>
+  }
+
+  @if (loading()){
+    <div class="text-center py-5">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Chargement...</span>
+      </div>
+    </div>
+  }
+</div>
