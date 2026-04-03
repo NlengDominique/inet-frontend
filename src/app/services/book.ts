@@ -3,12 +3,13 @@ import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {BookRequest, BookResponse, UpdateBookRequest} from '../models/book';
 import {PaginatedResponse} from '../models/PaginatedResponse';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BookService{
-  private apiUrl = 'http://localhost:8080/api/books';
+  private apiUrl = `${environment.apiUrl}/books`;
   constructor(private http: HttpClient) {}
 
   getAllBooks(page: number = 0, size: number = 10): Observable<PaginatedResponse<BookResponse>> {

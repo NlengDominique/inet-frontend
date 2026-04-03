@@ -1,0 +1,120 @@
+<div class="livre-detail-modern">
+  <!-- Bouton retour -->
+  <div class="mb-3">
+    <button class="btn-back" (click)="goBack()">
+      <i class="fas fa-arrow-left"></i>
+      <span>Retour au catalogue</span>
+    </button>
+  </div>
+
+  <!-- Chargement -->
+  @if (loading()) {
+    <div class="loading-state">
+      <div class="spinner"></div>
+      <p>Chargement du livre...</p>
+    </div>
+  } @else if (book()) {
+    <!-- Détails du livre -->
+    <div class="detail-grid">
+      <!-- Section image -->
+      <div class="image-section">
+        <div class="book-image">
+          @if (book()?.imageUrl) {
+            <img [src]="book()?.imageUrl" [alt]="book()?.title" class="book-cover">
+          } @else {
+            <div class="book-icon">
+              <i class="fas fa-book"></i>
+            </div>
+          }
+        </div>
+      </div>
+<!--      <div class="availability" [class.available]="book()?.availableCopies > 0">-->
+<!--        <i class="fas" [class.fa-check-circle]="livre.disponibles > 0" [class.fa-times-circle]="livre.disponibles <= 0"></i>-->
+<!--        <span>{{livre.disponibles > 0 ? 'Disponible' : 'Indisponible'}}</span>-->
+<!--      </div>-->
+
+      <!-- Bouton d'action -->
+<!--      <button class="btn-borrow"-->
+<!--              [disabled]="livre.disponibles <= 0"-->
+<!--              (click)="emprunterLivre()">-->
+<!--        <i class="fas fa-book-medical"></i>-->
+<!--        {{livre.disponibles > 0 ? 'Emprunter' : 'Indisponible'}}-->
+<!--      </button>-->
+    </div>
+
+    <!-- Section informations -->
+    <div class="info-section">
+      <!-- Titre et auteur -->
+      <div class="title-group">
+        <h1 class="livre-title">{{book()?.title}}</h1>
+        <p class="livre-author">
+          <i class="fas fa-user-edit"></i>
+          {{book()?.author}}
+        </p>
+      </div>
+
+      <!-- Statistiques -->
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-value">{{book()?.totalCopies}}</div>
+          <div class="stat-label">Exemplaires</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">{{book()?.availableCopies}}</div>
+          <div class="stat-label">Disponibles</div>
+        </div>
+  <!--      <div class="stat-item">
+          <div class="stat-value">{{book()?.totalCopies - book()?.availableCopies}}</div>
+          <div class="stat-label">Empruntés</div>
+        </div>-->
+<!--        <div class="stat-item">-->
+<!--          <div class="stat-value">{{calculatePopularite()}}%</div>-->
+<!--          <div class="stat-label">Popularité</div>-->
+<!--        </div>-->
+      </div>
+
+      <!-- Description -->
+      <div class="description-box">
+        <h3>
+          <i class="fas fa-align-left"></i>
+          Description
+        </h3>
+        <p class="description-text">{{book()?.summary}}</p>
+      </div>
+
+      <!-- Informations supplémentaires -->
+      <div class="additional-info">
+        <h4>
+          <i class="fas fa-info-circle"></i>
+          Informations pratiques
+        </h4>
+        <div class="info-list">
+          <div class="info-item">
+            <i class="fas fa-copy"></i>
+            <span>Exemplaires restants : {{book()?.availableCopies}}</span>
+          </div>
+          <div class="info-item">
+            <i class="fas fa-history"></i>
+            <span>Durée d'emprunt : 30 jours</span>
+          </div>
+          <div class="info-item">
+            <i class="fas fa-sync"></i>
+            <span>Renouvellement possible</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  } @else {
+    <!-- Livre non trouvé -->
+    <div class="not-found">
+      <div class="not-found-icon">
+        <i class="fas fa-book"></i>
+      </div>
+      <h3>Livre non trouvé</h3>
+      <p>Ce livre n'existe pas ou a été supprimé.</p>
+      <button class="btn-primary" (click)="goBack()">
+        Retour au catalogue
+      </button>
+    </div>
+  }
+</div>

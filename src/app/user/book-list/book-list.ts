@@ -12,7 +12,8 @@ import {DatePipe, NgOptimizedImage} from '@angular/common';
   imports: [
     FormsModule,
     DatePipe,
-    NgOptimizedImage
+    NgOptimizedImage,
+    RouterLink
   ],
   templateUrl: './book-list.html',
   styleUrl: './book-list.css',
@@ -40,7 +41,6 @@ export class BookList implements OnInit{
       this.bookService.getAllBooks(this.page(), this.size())
         .subscribe({
           next: (response) => {
-            console.log(response.content)
             this.books.set(response.content);
             this.totalPages.set(response.total_pages);
             this.page.set(response.page);
